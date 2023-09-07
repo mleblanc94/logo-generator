@@ -13,16 +13,16 @@ const userPrompt = [
     {
         type: 'input',
         name: 'color',
-        message: 'Please enter a (common) color that you would like the text to be:'
+        message: 'Please enter a (common) color that you would like this text to be:'
     },
     {
         type: 'input',
-        name: '',
-        message: ''
+        name: 'shape',
+        message: 'Please enter a shape that you would like the logo to be:'
     },
     {
         type: 'input',
-        name: '',
-        message: ''
+        name: 'shapeColor',
+        message: 'Please enter a (common) color you would like this shape to be:'
     },
 ]
