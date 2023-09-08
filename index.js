@@ -50,7 +50,14 @@ inquirer
     {
         type: 'input',
         name: 'text',
-        message: 'Please enter 3 characters of text to be included in your new logo:'
+        message: 'Please enter 3 characters of text to be included in your new logo:',
+        validate: function (input) {
+            if (input.length === 3) {
+                return true;
+            } else {
+                return "Please enter 3 characters for your logo"
+            }
+        }
     },
     {
         type: 'input',
