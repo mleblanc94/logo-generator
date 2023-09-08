@@ -24,7 +24,7 @@ A command line application that allows a user to create a logo after answering s
 ![image](https://github.com/mleblanc94/logo-generator/assets/60248680/e08cc5ff-0049-448e-af53-1dc8efddaaac)
 
 video walkthrough of the project:
-https://drive.google.com/file/d/1lBDy5w2wdRt62MwCFibFmIN0emgj8ery/view?pli=1
+[https://drive.google.com/file/d/1lBDy5w2wdRt62MwCFibFmIN0emgj8ery/view?pli=1](https://drive.google.com/file/d/1vRnPWGpQI2r9dy-xi9etOt9G9a186M0g/view)
 
 - When the user starts the application using node index.js, they are then prompted with a series of questions.
 - When a user enters information in about the 3 characters they would like included, the color they would like the text, the shape of the logo, and the color of the logo, they enter this information and it is reflected in the result.
