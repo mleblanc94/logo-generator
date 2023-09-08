@@ -1,5 +1,5 @@
 // Include the packages needed for this application
-const inquirer = import('inquirer');
+const inquirer = require('inquirer');
 const fs = require('fs');
 const { Triangle, Circle, Square } = require('./lib/shapes.js');
 
@@ -18,40 +18,39 @@ returnSVG() {
 
     switch (this.shape) {
         case 'Triangle':
-            shape = new Triangle(100, 100, this.shapeColor)
+            shape = new Triangle(this.shapeColor, this.textColor, this.text)
             break;
         case 'Circle':
-            shape = new Circle(50, this.shapeColor)
+            shape = new Circle(80, this.shapeColor, this.textColor, this.text)
             break;
         case 'Square':
-            shape = new Square(100, this.shapeColor)
+            shape = new Square(100, this.shapeColor, this.textColor, this.text)
             break;
     }
 
     const shapeSVG = shape.returnSVG();
 
     const svgTemplate = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
-    <rect width="100%" height="100%" fill="${this.shapeColor}" />
-    <text x="150" y="100" fill="${this.textColor}" text-anchor="middle" dy=".3em">${this.text}</text>
-    ${shapeSVG}
-  </svg>`;
+        ${shapeSVG}
+        </svg>`;
 
   return svgTemplate;
 }
 
 saveLogoToFile(filename) {
-    fs.writeFile(filename, this.returnSVG());
-    console.log('Logo has been successfully created!')
+    fs.writeFileSync(filename, this.returnSVG());
+    console.log(`Generated ${filename}`)
 }
 }
 
 // Create array of questions to ask the user to create their logo
 
-const userPrompt = [
+inquirer
+.prompt([
     {
         type: 'input',
         name: 'text',
-        message: 'Please enter some 3 characters of text to be included in your new logo:'
+        message: 'Please enter 3 characters of text to be included in your new logo:'
     },
     {
         type: 'input',
@@ -69,22 +68,12 @@ const userPrompt = [
         name: 'shapeColor',
         message: 'Please enter a (common) color you would like this shape to be:'
     },
-];
-
-
-
-function init() {
-    inquirer.prompt(userPrompt)
-    .then(answers => {
-      const userLogo = ({ text, textColor, shape, shapeColor }) => 
-  ``;
-    }
-  )
-
-// The function runs to create the SVG file
-const generateLogo = userLogo(answers)
-    writeToFile('./examples/logo.svg', generateLogo)
+])
+.then((answers) => {
+const userLogo = new logoTemplate(answers.text, answers.textColor, answers.shape, answers.shapeColor);
+userLogo.saveLogoToFile('./examples/logo.svg')
 }
-
-// Function call to initialize app
-init();
+)
+.catch((error) => {
+    console.error('Error: ' + error);
+});
