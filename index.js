@@ -4,7 +4,7 @@ const fs = require('fs');
 const { Triangle, Circle, Square } = require('./lib/shapes.js');
 
 // Create a class to be used to generate a logo to the users specifications
-class logoTemplate {
+class LogoTemplate {
     constructor(text, textColor, shape, shapeColor) {
         this.text = text;
         this.textColor = textColor;
@@ -77,7 +77,7 @@ inquirer
     },
 ])
 .then((answers) => {
-const userLogo = new logoTemplate(answers.text, answers.textColor, answers.shape, answers.shapeColor);
+const userLogo = new LogoTemplate(answers.text, answers.textColor, answers.shape, answers.shapeColor);
 userLogo.saveLogoToFile('./examples/logo.svg')
 }
 )
